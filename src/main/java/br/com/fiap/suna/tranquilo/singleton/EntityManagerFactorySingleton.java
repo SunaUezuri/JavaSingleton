@@ -1,8 +1,8 @@
 package br.com.fiap.suna.tranquilo.singleton;
 
 
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class EntityManagerFactorySingleton {
 

@@ -7,7 +7,7 @@ import br.com.fiap.suna.tranquilo.entity.TipoInvestimento;
 import br.com.fiap.suna.tranquilo.exception.CommitException;
 import br.com.fiap.suna.tranquilo.exception.IdNaoEncontradoException;
 import br.com.fiap.suna.tranquilo.singleton.EntityManagerFactorySingleton;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 
 public class View {
     public static void main(String[] args) {
@@ -16,7 +16,7 @@ public class View {
 
         InvestimentoDao dao = new InvestimentoDaoImpl(em);
 
-        Investimento investimento = new Investimento("Tranquilo Coin", 10000001.0, TipoInvestimento.CRIPTO);
+        Investimento investimento = new Investimento("Tranquilo Coin Better", 10000001.0, TipoInvestimento.CRIPTO);
 
         //Cadastrar
         try {
@@ -27,10 +27,29 @@ public class View {
             System.out.println(e.getMessage());
         }
 
-        //REad
+        //Read
         try {
-            Investimento busca = dao.buscar(1);
+            Investimento busca = dao.buscar(2);
             System.out.println(busca.getNome());
+
+            //Atualizar
+            busca.setValor(1000.0);
+            dao.salvar(busca);
+            dao.commit();
+            System.out.println("Investimento atualizado");
+        } catch (IdNaoEncontradoException e) {
+            System.out.println(e.getMessage());
+        } catch (CommitException f) {
+            System.out.println(f.getMessage());
+        }
+
+        //Deletar
+        try {
+            dao.remover(2);
+            dao.commit();
+            System.out.println("Investimento removido!");
+        } catch (CommitException e) {
+            System.out.println(e.getMessage());
         } catch (IdNaoEncontradoException e) {
             System.out.println(e.getMessage());
         }

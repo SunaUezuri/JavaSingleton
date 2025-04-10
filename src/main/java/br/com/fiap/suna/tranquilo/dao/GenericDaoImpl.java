@@ -4,7 +4,7 @@ import java.lang.reflect.ParameterizedType;
 
 import br.com.fiap.suna.tranquilo.exception.CommitException;
 import br.com.fiap.suna.tranquilo.exception.IdNaoEncontradoException;
-import jakarta.persistence.EntityManager;
+import javax.persistence.EntityManager;
 
 public abstract class GenericDaoImpl<T,K> implements GenericDao<T, K> {
 

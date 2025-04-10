@@ -1,6 +1,6 @@
 package br.com.fiap.suna.tranquilo.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name="TDS_TB_INVESTIMENTO")
